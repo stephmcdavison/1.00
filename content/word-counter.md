@@ -1,7 +1,6 @@
 ---
 title: Word Counter
-description: Free online word counter for essays, documents, work, and study. Instantly count words, characters, and reading time.
-This tool also works as a character counter, counting characters with and without spaces.
+description: Free online word counter for essays, documents, work, and study. Instantly count words, characters, and reading time. This tool also works as a character counter, counting characters with and without spaces.
 eleventyNavigation:
   key: Word Counter
   order: 2
