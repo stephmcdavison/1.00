@@ -1,11 +1,11 @@
 ---
 title: Word Counter
 description: Free online word counter for essays, documents, work, and study. Instantly count words, characters, and reading time.
+eleventyNavigation:
+  key: Word Counter
+  order: 2
 ---
 
-# Word Counter
-
-Paste your text below to instantly count words, characters, and reading time.
 
 > The interactive word counter tool will appear here next.
 
