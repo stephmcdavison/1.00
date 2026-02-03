@@ -6,6 +6,7 @@ Paste your text below to instantly count words, characters, and reading time.
 
 **This tool also works as a character counter**, counting characters with and without spaces.
 
+
 eleventyNavigation:
   key: Word Counter
   order: 2
