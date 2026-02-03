@@ -9,18 +9,53 @@ eleventyNavigation:
 
 > The interactive word counter tool will appear here next.
 
-## How to use
-1. Paste your text into the box
-2. See your word count instantly
-3. Edit your text and re-check as needed
+<div id="wc-tool" style="margin: 1rem 0;">
+  <label for="wc-text"><strong>Paste your text</strong></label>
+  <textarea id="wc-text" rows="10" style="width:100%; padding:12px; font-size:16px;" placeholder="Paste or type here..."></textarea>
 
-## FAQs
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+    <div><strong>Words:</strong> <span id="wc-words">0</span></div>
+    <div><strong>Characters (with spaces):</strong> <span id="wc-chars">0</span></div>
+    <div><strong>Characters (no spaces):</strong> <span id="wc-chars-nospace">0</span></div>
+    <div><strong>Reading time:</strong> <span id="wc-reading">0 min</span></div>
+  </div>
 
-### Does this count characters too?
-Yes — including characters with and without spaces.
+  <button id="wc-clear" type="button" style="margin-top:12px; padding:10px 14px; cursor:pointer;">
+    Clear
+  </button>
+</div>
 
-### Is this free?
-Yes, completely free.
+<script>
+(function () {
+  const textEl = document.getElementById("wc-text");
+  const wordsEl = document.getElementById("wc-words");
+  const charsEl = document.getElementById("wc-chars");
+  const charsNoSpaceEl = document.getElementById("wc-chars-nospace");
+  const readingEl = document.getElementById("wc-reading");
+  const clearBtn = document.getElementById("wc-clear");
 
-### Does it work on mobile?
-Yes.
+  function updateCounts() {
+    const text = textEl.value || "";
+
+    const words = text.trim() ? text.trim().split(/\s+/).filter(Boolean).length : 0;
+    const chars = text.length;
+    const charsNoSpace = text.replace(/\s/g, "").length;
+
+    const minutes = words === 0 ? 0 : Math.max(1, Math.ceil(words / 200));
+
+    wordsEl.textContent = String(words);
+    charsEl.textContent = String(chars);
+    charsNoSpaceEl.textContent = String(charsNoSpace);
+    readingEl.textContent = minutes + " min";
+  }
+
+  textEl.addEventListener("input", updateCounts);
+  clearBtn.addEventListener("click", function () {
+    textEl.value = "";
+    updateCounts();
+    textEl.focus();
+  });
+
+  updateCounts();
+})();
+</script>
